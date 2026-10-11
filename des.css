@@ -1,0 +1,130 @@
+/* ========================================================
+   Custom CSS — Hitam & Kuning dengan Aksen Game & Glitch
+   Framework: Tailwind CSS
+   ======================================================== */
+
+/* Offset scroll agar judul section tidak tertutup navbar */
+section {
+  scroll-margin-top: 5rem;
+}
+
+/* Pola Tilemap / Grid Koordinat Game */
+.tilemap-grid {
+  background-image: 
+    linear-gradient(to right, rgba(250, 204, 21, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(250, 204, 21, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Efek Scanline Halus CRT Retro */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Garis Glitch Horizontal (Glitch Streaks) */
+@keyframes glitchStreak {
+  0% { transform: scaleX(0.2) translateX(-50px); opacity: 0; }
+  40% { transform: scaleX(1) translateX(10px); opacity: 0.6; }
+  70% { transform: scaleX(0.8) translateX(50px); opacity: 0.3; }
+  100% { transform: scaleX(0.1) translateX(150px); opacity: 0; }
+}
+
+.glitch-streak {
+  animation: glitchStreak 7s infinite ease-in-out;
+}
+
+.streak-1 { animation-delay: 0s; }
+.streak-2 { animation-delay: 2.5s; }
+.streak-3 { animation-delay: 4.8s; }
+
+/* Animasi Melayang untuk Coretan / Doodles Game */
+@keyframes floatSlow1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes floatSlow2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(10px) rotate(-2deg); }
+}
+
+.game-float-1 { animation: floatSlow1 10s ease-in-out infinite; }
+.game-float-2 { animation: floatSlow2 12s ease-in-out infinite; }
+.game-float-3 { animation: floatSlow1 14s ease-in-out infinite; }
+
+/* Sudut Siku-Siku HUD Arcade pada Kartu (.hud-card) */
+.hud-card {
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hud-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #facc15;
+  border-left: 2px solid #facc15;
+  border-top-left-radius: 6px;
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.hud-card::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid #facc15;
+  border-right: 2px solid #facc15;
+  border-bottom-right-radius: 6px;
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.hud-card:hover::before,
+.hud-card:hover::after {
+  opacity: 1;
+}
+
+.hud-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(250, 204, 21, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(250, 204, 21, 0.08);
+}
+
+/* Nav Item Aktif (ScrollSpy) */
+.nav-item.active {
+  background-color: rgba(250, 204, 21, 0.12);
+  color: #facc15 !important;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+}
+
+/* Custom Scrollbar Hitam & Kuning Halus */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a32;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #facc15;
+}
